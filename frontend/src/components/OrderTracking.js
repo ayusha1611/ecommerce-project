@@ -14,7 +14,7 @@ const OrderTracking = ({ orderId, onBack }) => {
   const fetchTracking = async () => {
     try {
     const response = await axios.get(
-  `http://localhost:5000/api/orders/${orderId}/tracking`,
+  `${process.env.REACT_APP_API_URL}/api/orders/${orderId}/tracking`,
   {
     headers: { Authorization: `Bearer ${token}` }
   }

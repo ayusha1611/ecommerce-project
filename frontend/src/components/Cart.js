@@ -172,7 +172,7 @@ const rowStyle = {
           }}
         >
           <img
-            src={`http://localhost:5000${item.image || item.images?.[0]}`}
+            src={`${process.env.REACT_APP_API_URL}${item.image || item.images?.[0]}`}
             alt={item.name}
             style={{
               width: '140px',

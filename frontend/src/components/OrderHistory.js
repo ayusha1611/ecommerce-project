@@ -187,7 +187,7 @@ const [cancelOrderId, setCancelOrderId] = useState(null);
                       }}
                     >
                       <img
-                        src={`http://localhost:5000${item.productImage}`}
+                        src={`${process.env.REACT_APP_API_URL}${item.productImage}`}
                         alt={item.productName}
                         style={{
                           width: '60px',

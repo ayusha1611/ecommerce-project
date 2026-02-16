@@ -42,7 +42,7 @@ const HomePage = ({ onProductClick }) => {
               onClick={() => onProductClick(product)}
             >
               <img
-                src={`http://localhost:5000${product.image}`}
+                src={`${process.env.REACT_APP_API_URL}${product.image}`}
                 alt={product.name}
                 className="product-image"
               />

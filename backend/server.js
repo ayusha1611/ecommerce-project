@@ -14,7 +14,12 @@ const app = express();
 connectDB();
 
 // Middleware
-app.use(cors());
+
+app.use(cors({
+  origin: "https://ecommerce-project-rhlr.onrender.com",
+  credentials: true
+}));
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 

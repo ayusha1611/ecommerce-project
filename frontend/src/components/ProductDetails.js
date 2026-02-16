@@ -112,7 +112,11 @@ const ProductDetails = ({ product, onBack }) => {
         <FaArrowLeft /> Back to Products
       </button>
 
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '40px', marginBottom: '40px' }}>
+     <div
+  className="product-details-grid"
+  style={{ display: 'grid', gap: '40px', marginBottom: '40px' }}
+>
+
         {/* Product Images */}
         <div>
           {/* Main Image */}
@@ -152,7 +156,7 @@ const ProductDetails = ({ product, onBack }) => {
                     borderRadius: '5px',
                     overflow: 'hidden',
                     cursor: 'pointer',
-                    border: selectedImage === img ? '3px solid #2e3192' : '2px solid #ddd',
+                    border: selectedImage === img ? '3px solid #b49b0d97' : '2px solid #ddd',
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center'
@@ -350,7 +354,7 @@ const ProductDetails = ({ product, onBack }) => {
             style={{
               width: '100%',
               padding: '18px',
-              backgroundColor: isInStock ? '#2e3192' : '#ccc',
+              backgroundColor: isInStock ? '#b49b0d97' : '#ccc',
               color: 'white',
               border: 'none',
               borderRadius: '8px',
@@ -369,8 +373,8 @@ const ProductDetails = ({ product, onBack }) => {
                 width: '100%',
                 padding: '15px',
                 backgroundColor: 'white',
-                color: '#2e3192',
-                border: '2px solid #2e3192',
+                color: '#b49b0d97',
+                border: '2px solid #b49b0d97',
                 borderRadius: '8px',
                 fontSize: '16px',
                 fontWeight: '600',
@@ -437,7 +441,7 @@ const ProductDetails = ({ product, onBack }) => {
             </div>
             <button type="submit" style={{
               padding: '10px 30px',
-              backgroundColor: '#2e3192',
+              backgroundColor: '#b49b0d97',
               color: 'white',
               border: 'none',
               borderRadius: '5px',

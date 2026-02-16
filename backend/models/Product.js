@@ -15,6 +15,7 @@ const productSchema = new mongoose.Schema({
     required: true,
     min: 0
   },
+  
   images: [{
     type: String
   }],
@@ -49,6 +50,7 @@ const productSchema = new mongoose.Schema({
     type: Date,
     default: Date.now
   }
+  
 });
 
 // Auto-update inStock and primary image

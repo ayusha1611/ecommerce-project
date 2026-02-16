@@ -173,6 +173,7 @@ const LoginModal = ({ onClose }) => {
                   required
                   placeholder="Enter admin password"
                 />
+                <p style={{ fontSize: '12px', color: '#999', marginTop: '5px' }}>Default admin credentials: admin/admin123</p>
               </div>
             </>
           )}

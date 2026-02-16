@@ -9,8 +9,8 @@ const Header = ({ onNavigate, currentPage }) => {
   const { getCartCount } = useCart();
   const [showLoginModal, setShowLoginModal] = useState(false);
 
-  const WHATSAPP_NUMBER = '9430561797'; // Format: country code + number (no +, spaces, or hyphens)
-  const PHONE_NUMBER = '9430561797';
+  const WHATSAPP_NUMBER = '89552563252'; // Format: country code + number (no +, spaces, or hyphens)
+  const PHONE_NUMBER = '8985498524';
 
   const handleCartClick = () => {
     if (isAuthenticated) {
@@ -41,21 +41,11 @@ const Header = ({ onNavigate, currentPage }) => {
         <div className="header-container">
           <div className="header-top">
             <div className="logo-section">
-              <div className="logo">LeBON</div>
-              <div className="company-info">
-                <h1>Shikhar Garments</h1>
-                <div className="company-details">
-                  <span>
-                    <FaMapMarkerAlt /> Katihar, Bihar
-                  </span>
-                  <span>GST - 10BRJPB9017P1ZQ</span>
-                  <span>
-                    <FaPhone /> Mobile
-                  </span>
-                  <span>
-                    <FaEnvelope /> Email
-                  </span>
-                  <span>18 yrs</span>
+              <div className="logo">LemOn</div>
+              <div className="company-info" >
+                <h1>LemOn</h1>
+                <div className="company-details" style={{ color: 'white' }}>
+                <p>Where Inner Beauty Meets Confidence</p>
                 </div>
               </div>
             </div>

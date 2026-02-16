@@ -25,7 +25,7 @@ const AdminDashboard = () => {
     category: '',
     subcategory: '',
     quantity: 0,
-    minOrderQuantity: 24,
+    
     images: []
   });
 
@@ -336,8 +336,8 @@ const AdminDashboard = () => {
   'Order Status',
   'Tracking Number',
   'Pickup Address'
-];
-
+  ];
+  
     // CSV Rows
     const rows = orders.map(order => [
   order._id.slice(-8),
@@ -357,7 +357,7 @@ const AdminDashboard = () => {
   order.orderStatus,
   order.trackingNumber || '-',
   'Katihar, Bihar, India'
-]);
+ ]);
 
 
     // Create CSV content
@@ -473,201 +473,227 @@ const AdminDashboard = () => {
           Settings
         </button>
       </div>
+{/* Products Tab */}
+{activeTab === 'products' && (
+  <div className="dashboard-section">
 
-      {/* Products Tab */}
-      {activeTab === 'products' && (
-        <div className="dashboard-section">
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '20px' }}>
-            <h3>Products</h3>
-            <button className="add-product-btn" onClick={() => setShowAddProduct(!showAddProduct)}>
-              {showAddProduct ? 'Cancel' : '+ Add Product'}
-            </button>
-          </div>
+    <div style={{ 
+      display: 'flex', 
+      justifyContent: 'space-between', 
+      alignItems: 'center', 
+      marginBottom: '20px' 
+    }}>
+      <h3>Products</h3>
+      <button 
+        className="add-product-btn" 
+        onClick={() => setShowAddProduct(!showAddProduct)}
+      >
+        {showAddProduct ? 'Cancel' : '+ Add Product'}
+      </button>
+    </div>
 
-          {showAddProduct && (
-            <form onSubmit={handleAddProduct} style={{ marginBottom: '30px', padding: '25px', backgroundColor: '#f9f9f9', borderRadius: '8px' }}>
-              <div className="form-group">
-                <label>Product Name</label>
-                <input
-                  type="text"
-                  name="name"
-                  value={productForm.name}
-                  onChange={handleProductFormChange}
-                  required
-                  placeholder="e.g., Mens Cotton Boxers"
-                />
-              </div>
-              <div className="form-group">
-                <label>Description</label>
-                <textarea
-                  name="description"
-                  value={productForm.description}
-                  onChange={handleProductFormChange}
-                  required
-                  rows="3"
-                  placeholder="Product description..."
-                />
-              </div>
-              <div className="form-group">
-                <label>Price (₹)</label>
-                <input
-                  type="number"
-                  name="price"
-                  value={productForm.price}
-                  onChange={handleProductFormChange}
-                  required
-                  min="0"
-                  placeholder="e.g., 299"
-                />
-              </div>
-              <div className="form-group">
-                <label>Category</label>
-                <select
-                  name="category"
-                  value={productForm.category}
-                  onChange={handleProductFormChange}
-                  required
-                  style={{ padding: '12px', fontSize: '14px' }}
-                >
-                  <option value="">Select Category</option>
-                  {categories.filter(c => c.isActive).map(cat => (
-                    <option key={cat._id} value={cat.name}>{cat.name}</option>
-                  ))}
-                </select>
-                {categories.length === 0 && (
-                  <p style={{ fontSize: '13px', color: '#ff6b6b', marginTop: '5px' }}>
-                    No categories available. Please add categories first.
-                  </p>
-                )}
-              </div>
-              <div className="form-group">
-                <label>Subcategory (Optional)</label>
-                <input
-                  type="text"
-                  name="subcategory"
-                  value={productForm.subcategory}
-                  onChange={handleProductFormChange}
-                  placeholder="e.g., Cotton Boxers, Regular Stripe Shorts"
-                />
-              </div>
-              <div className="form-group">
-                <label>Quantity (Stock)</label>
-                <input
-                  type="number"
-                  name="quantity"
-                  value={productForm.quantity}
-                  onChange={handleProductFormChange}
-                  required
-                  min="0"
-                  placeholder="e.g., 100"
-                />
-                <p style={{ fontSize: '12px', color: '#666', marginTop: '5px' }}>
-                  Available stock quantity
-                </p>
-              </div>
-              <div className="form-group">
-                <label>Minimum Order Quantity</label>
-                <input
-                  type="number"
-                  name="minOrderQuantity"
-                  value={productForm.minOrderQuantity}
-                  onChange={handleProductFormChange}
-                  required
-                  min="1"
-                  placeholder="24"
-                />
-                <p style={{ fontSize: '12px', color: '#666', marginTop: '5px' }}>
-                  Customers must order at least this many pieces
-                </p>
-              </div>
-              <div className="form-group">
-                <label>Images (Upload up to 5)</label>
-                <input
-                  type="file"
-                  name="images"
-                  onChange={handleProductFormChange}
-                  accept="image/*"
-                  multiple
-                  required
-                />
-                <p style={{ fontSize: '12px', color: '#666', marginTop: '5px' }}>
-                  Select up to 5 product images
-                </p>
-              </div>
-              <button type="submit" className="submit-btn">Add Product</button>
-            </form>
-          )}
+    {showAddProduct && (
+  <form
+  onSubmit={handleAddProduct}
+  style={{
+    marginBottom: '30px',
+    padding: '30px',
+    backgroundColor: '#f9f9f9',
+    borderRadius: '10px'
+  }}
+>
+  {/* Row 1 */}
+  <div style={{ display: 'flex', gap: '15px', marginBottom: '15px' }}>
+    <input
+      type="text"
+      name="name"
+      placeholder="Product Name"
+      value={productForm.name}
+      onChange={handleProductFormChange}
+      required
+      style={{ flex: 1, padding: '10px' }}
+    />
 
-          <div className="product-list">
-            <table>
-              <thead>
-                <tr>
-                  <th>Image</th>
-                  <th>Name</th>
-                  <th>Category</th>
-                  <th>Price</th>
-                  <th>Quantity</th>
-                  <th>Min Order</th>
-                  <th>Stock Status</th>
-                  <th>Actions</th>
-                </tr>
-              </thead>
-              <tbody>
-                {products.map((product) => (
-                  <tr key={product._id}>
-                    <td>
-                      <img
-                        src={`http://localhost:5000${product.image || product.images?.[0]}`}
-                        alt={product.name}
-                        className="product-thumbnail"
-                      />
-                    </td>
-                    <td>{product.name}</td>
-                    <td>{product.category}</td>
-                    <td>₹{product.price}</td>
-                    <td>
-                      <input
-                        type="number"
-                        value={editingQuantity[product._id] !== undefined ? editingQuantity[product._id] : product.quantity}
-                        onChange={(e) => setEditingQuantity({...editingQuantity, [product._id]: e.target.value})}
-                        onBlur={() => {
-                          if (editingQuantity[product._id] !== undefined) {
-                            handleUpdateQuantity(product._id, editingQuantity[product._id]);
-                          }
-                        }}
-                        style={{ width: '70px', padding: '5px', textAlign: 'center' }}
-                        min="0"
-                      />
-                    </td>
-                    <td>{product.minOrderQuantity || 24}</td>
-                    <td>
-                      {product.inStock && product.quantity >= (product.minOrderQuantity || 24) ? (
-                        <span style={{ color: '#28a745', fontWeight: '600' }}>
-                          ✅ In Stock
-                        </span>
-                      ) : (
-                        <span style={{ color: '#dc3545', fontWeight: '600' }}>
-                          ⚠️ Out of Stock
-                        </span>
-                      )}
-                    </td>
-                    <td>
-                      <div className="action-buttons">
-                        <button
-                          className="delete-btn"
-                          onClick={() => handleDeleteProduct(product._id)}
-                        >
-                          Delete
-                        </button>
-                      </div>
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        </div>
-      )}
+    <textarea
+      name="description"
+      placeholder="Description"
+      value={productForm.description}
+      onChange={handleProductFormChange}
+      required
+      style={{ flex: 1, padding: '10px' }}
+    />
+
+    <input
+      type="number"
+      name="price"
+      placeholder="Price"
+      value={productForm.price}
+      onChange={handleProductFormChange}
+      required
+      style={{ width: '150px', padding: '10px' }}
+    />
+  </div>
+
+  {/* Row 2 */}
+  <div style={{ display: 'flex', gap: '15px', marginBottom: '15px' }}>
+    <select
+      name="category"
+      value={productForm.category}
+      onChange={handleProductFormChange}
+      required
+      style={{ flex: 1, padding: '10px' }}
+    >
+      <option value="">Select Category</option>
+      {categories.map(cat => (
+        <option key={cat._id} value={cat.name}>
+          {cat.name}
+        </option>
+      ))}
+    </select>
+
+    <input
+      type="number"
+      name="quantity"
+      placeholder="Quantity"
+      value={productForm.quantity}
+      onChange={handleProductFormChange}
+      required
+      style={{ width: '150px', padding: '10px' }}
+    />
+
+    <input
+      type="number"
+      name="minOrderQuantity"
+      placeholder="Min Order"
+      value={productForm.minOrderQuantity}
+      onChange={handleProductFormChange}
+      style={{ width: '150px', padding: '10px' }}
+    />
+  </div>
+
+  {/* Row 3 */}
+  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+    <input
+      type="file"
+      name="images"
+      multiple
+      onChange={handleProductFormChange}
+      required
+    />
+
+    <button
+      type="submit"
+      style={{
+        padding: '10px 25px',
+        backgroundColor: '#00a699',
+        color: 'white',
+        border: 'none',
+        borderRadius: '5px',
+        fontWeight: '600',
+        cursor: 'pointer'
+      }}
+    >
+      Add Product
+    </button>
+  </div>
+</form>
+
+)}
+
+
+    <div className="product-list">
+      <div className="table-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th>Image</th>
+              <th>Name</th>
+              <th>Category</th>
+              <th>Price</th>
+              <th>Quantity</th>
+              <th>Min Order</th>
+              <th>Stock Status</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            {products.map((product) => (
+              <tr key={product._id}>
+                <td>
+                  <img
+                   src={`${process.env.REACT_APP_API_URL}${product.image || product.images?.[0]}`}
+
+                    alt={product.name}
+                    className="product-thumbnail"
+                  />
+                </td>
+                <td>{product.name}</td>
+                <td>{product.category}</td>
+                <td>₹{product.price}</td>
+                <td>
+                  <input
+                    type="number"
+                    value={
+                      editingQuantity[product._id] !== undefined
+                        ? editingQuantity[product._id]
+                        : product.quantity
+                    }
+                    onChange={(e) =>
+                      setEditingQuantity({
+                        ...editingQuantity,
+                        [product._id]: e.target.value
+                      })
+                    }
+                    onBlur={() => {
+                      if (editingQuantity[product._id] !== undefined) {
+                        handleUpdateQuantity(
+                          product._id,
+                          editingQuantity[product._id]
+                        );
+                      }
+                    }}
+                    style={{
+                      width: '70px',
+                      padding: '5px',
+                      textAlign: 'center'
+                    }}
+                    min="0"
+                  />
+                </td>
+                <td>{product.minOrderQuantity || 24}</td>
+                <td>
+                  {product.inStock &&
+                  product.quantity >= (product.minOrderQuantity || 24) ? (
+                    <span style={{ color: '#28a745', fontWeight: '600' }}>
+                      ✅ In Stock
+                    </span>
+                  ) : (
+                    <span style={{ color: '#dc3545', fontWeight: '600' }}>
+                      ⚠️ Out of Stock
+                    </span>
+                  )}
+                </td>
+                <td>
+                  <div className="action-buttons">
+                    <button
+                      className="delete-btn"
+                      onClick={() =>
+                        handleDeleteProduct(product._id)
+                      }
+                    >
+                      Delete
+                    </button>
+                  </div>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div> {/* table-wrapper */}
+    </div>   {/* product-list */}
+
+  </div>    
+)}
 
       {/* Categories Tab */}
       {activeTab === 'categories' && (
@@ -730,6 +756,7 @@ const AdminDashboard = () => {
           )}
 
           <div className="product-list">
+            <div className="table-wrapper">
             <table>
               <thead>
                 <tr>
@@ -785,6 +812,7 @@ const AdminDashboard = () => {
                 })}
               </tbody>
             </table>
+            </div> {/* table-wrapper */}
 
             {categories.length === 0 && (
               <div style={{ padding: '40px', textAlign: 'center', color: '#999' }}>
@@ -817,6 +845,7 @@ const AdminDashboard = () => {
             </button>
           </div>
           <div className="order-list">
+            <div className="table-wrapper">
             <table>
               <thead>
                 <tr>
@@ -850,7 +879,7 @@ const AdminDashboard = () => {
       {order.shippingAddress.country}
     </>
   )}
-</td>
+ </td>
 
                     <td>{order.items.length}</td>
                     <td style={{ fontWeight: '600', color: '#00a699' }}>
@@ -878,11 +907,25 @@ const AdminDashboard = () => {
                         <span style={{ color: '#999' }}>-</span>
                       )}
                     </td>
-                    <td>
-                      <span className={`status-badge status-${order.orderStatus}`}>
-                        {order.orderStatus}
-                      </span>
-                    </td>
+                   <td>
+  {order.paymentStatus === 'refunded' ? (
+    <span style={{
+      backgroundColor: 'red',
+      color: 'white',
+      padding: '4px 8px',
+      borderRadius: '4px',
+      fontSize: '12px',
+      fontWeight: '600'
+    }}>
+      Refunded
+    </span>
+  ) : (
+    <span className={`status-badge status-${order.orderStatus}`}>
+      {order.orderStatus}
+    </span>
+  )}
+ </td>
+
                     <td>
                       <input
                         type="text"
@@ -897,8 +940,7 @@ const AdminDashboard = () => {
                       <select
                         value={order.orderStatus}
                         onChange={(e) => handleUpdateOrderStatus(order._id, e.target.value)}
-                        style={{ padding: '5px' }}
-                      >
+                        style={{ padding: '5px' }}>
                         <option value="pending">Pending</option>
                         <option value="confirmed">Confirmed</option>
                         <option value="processing">Processing</option>
@@ -906,12 +948,15 @@ const AdminDashboard = () => {
                         <option value="out_for_delivery">Out for Delivery</option>
                         <option value="delivered">Delivered</option>
                         <option value="cancelled">Cancelled</option>
+                        <option value="refunded">Refunded</option>
                       </select>
+                     
                     </td>
                   </tr>
                 ))}
               </tbody>
             </table>
+            </div> {/* table-wrapper */}
           </div>
         </div>
       )}
@@ -921,6 +966,7 @@ const AdminDashboard = () => {
         <div className="dashboard-section">
           <h3>Users</h3>
           <div className="order-list">
+              <div className="table-wrapper">
             <table>
               <thead>
                 <tr>
@@ -942,6 +988,7 @@ const AdminDashboard = () => {
               </tbody>
             </table>
           </div>
+        </div>
         </div>
       )}
 
@@ -989,7 +1036,7 @@ const AdminDashboard = () => {
 
             {/* Email Configuration */}
             <section style={{ marginBottom: '30px' }}>
-              <h4 style={{ marginBottom: '15px', color: '#2e3192' }}>Email Settings (SMTP)</h4>
+              <h4 style={{ marginBottom: '15px', color: '#b49b0d97' }}>Email Settings (SMTP)</h4>
               
               <div className="form-group">
                 <label>SMTP Host</label>
@@ -1015,7 +1062,6 @@ const AdminDashboard = () => {
                   placeholder="587"
                 />
               </div>
-              
               <div className="form-group">
                 <label>Email Username</label>
                 <input
@@ -1048,7 +1094,7 @@ const AdminDashboard = () => {
 
             {/* SMS Configuration */}
             <section style={{ marginBottom: '30px' }}>
-              <h4 style={{ marginBottom: '15px', color: '#2e3192' }}>SMS Settings</h4>
+              <h4 style={{ marginBottom: '15px', color: '#b49b0d97' }}>SMS Settings</h4>
               
               <div className="form-group">
                 <label>SMS API Key</label>
@@ -1100,7 +1146,7 @@ const AdminDashboard = () => {
               onClick={handleSaveSettings}
               style={{
                 padding: '12px 40px',
-                backgroundColor: '#2e3192',
+                backgroundColor: '#b49b0d97',
                 color: 'white',
                 border: 'none',
                 borderRadius: '5px',
@@ -1115,6 +1161,7 @@ const AdminDashboard = () => {
         </div>
       )}
     </div>
+
   );
 };
 

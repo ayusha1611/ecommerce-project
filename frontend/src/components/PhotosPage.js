@@ -28,7 +28,7 @@ const PhotosPage = ({ onProductClick }) => {
 
   return (
     <div style={{ maxWidth: '1400px', margin: '30px auto', padding: '0 20px' }}>
-      <h2 style={{ fontSize: '32px', marginBottom: '10px', color: '#2e3192' }}>
+      <h2 style={{ fontSize: '32px', marginBottom: '10px', color: '#b49b0d97' }}>
         Photos
       </h2>
       <p style={{ fontSize: '16px', color: '#666', marginBottom: '40px' }}>

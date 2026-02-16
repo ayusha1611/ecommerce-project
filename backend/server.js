@@ -27,6 +27,8 @@ const uploadsDir = path.join(__dirname, 'uploads');
 if (!fs.existsSync(uploadsDir)) {
   fs.mkdirSync(uploadsDir);
 }
+const paymentRoutes = require("./routes/payment");
+app.use("/api/payment", paymentRoutes);
 
 // Routes
 app.use('/api/auth', require('./routes/auth'));
@@ -36,6 +38,7 @@ app.use('/api/reviews', require('./routes/reviews'));
 app.use('/api/users', require('./routes/users'));
 app.use('/api/categories', require('./routes/categories'));
 app.use('/api/settings', require('./routes/settings'));
+
 
 // Root route
 app.get('/', (req, res) => {

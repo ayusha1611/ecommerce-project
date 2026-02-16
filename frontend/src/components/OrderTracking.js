@@ -13,9 +13,14 @@ const OrderTracking = ({ orderId, onBack }) => {
 
   const fetchTracking = async () => {
     try {
-      const response = await axios.get(`/api/orders/${orderId}/tracking`, {
-        headers: { Authorization: `Bearer ${token}` }
-      });
+    const response = await axios.get(
+  `http://localhost:5000/api/orders/${orderId}/tracking`,
+  {
+    headers: { Authorization: `Bearer ${token}` }
+  }
+);
+
+  
       
       if (response.data.success) {
         setTracking(response.data.tracking);
@@ -86,7 +91,7 @@ const OrderTracking = ({ orderId, onBack }) => {
           cursor: 'pointer',
           border: 'none',
           background: 'none',
-          color: '#2e3192',
+          color: '#b49b0d97',
           fontSize: '16px',
           fontWeight: '600'
         }}>
@@ -100,7 +105,8 @@ const OrderTracking = ({ orderId, onBack }) => {
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '30px', paddingBottom: '20px', borderBottom: '2px solid #f0f0f0' }}>
           <div>
             <p style={{ fontSize: '14px', color: '#666', marginBottom: '5px' }}>Order ID</p>
-            <p style={{ fontSize: '18px', fontWeight: '600' }}>#{tracking.orderId.slice(-8)}</p>
+            <p style={{ fontSize: '18px', fontWeight: '600' }}>#{tracking?.orderId?.toString().slice(-8)}
+</p>
           </div>
           <div style={{ textAlign: 'right' }}>
             <p style={{ fontSize: '14px', color: '#666', marginBottom: '5px' }}>Order Date</p>
@@ -213,6 +219,7 @@ const OrderTracking = ({ orderId, onBack }) => {
           </div>
         </div>
 
+
         {/* Status History */}
         {tracking.statusHistory && tracking.statusHistory.length > 0 && (
           <div>
@@ -254,6 +261,7 @@ const OrderTracking = ({ orderId, onBack }) => {
         )}
       </div>
     </div>
+    
   );
 };
 

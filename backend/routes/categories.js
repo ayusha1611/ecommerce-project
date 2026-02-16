@@ -92,10 +92,10 @@ router.delete('/:id', authMiddleware, adminMiddleware, async (req, res) => {
 router.post('/initialize', authMiddleware, adminMiddleware, async (req, res) => {
   try {
     const defaultCategories = [
-      { name: 'Men Shorts', order: 1 },
-      { name: 'Men Lower', order: 2 },
-      { name: 'Kids Wear', order: 3 },
-      { name: 'Women Wear', order: 4 },
+      { name: 'EyeShadow', order: 1 },
+      { name: 'Lipsticks', order: 2 },
+      { name: 'SkinCare', order: 3 },
+      { name: 'Makeup Brushes', order: 4 },
       { name: 'Other Products', order: 5 }
     ];
 

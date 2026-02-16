@@ -102,7 +102,7 @@ const [cancelOrderId, setCancelOrderId] = useState(null);
           style={{
             marginBottom: '20px',
             padding: '12px 24px',
-            backgroundColor: '#2e3192',
+            backgroundColor: '#b49b0d97',
             color: 'white',
             border: 'none',
             borderRadius: '5px',
@@ -277,31 +277,12 @@ const [cancelOrderId, setCancelOrderId] = useState(null);
 
                 {/* Action Buttons */}
                 <div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap' }}>
-                  <button
-                    onClick={() => {
-                      setSelectedOrder(order);
-                      setShowTracking(true);
-                    }}
-                    style={{
-                      flex: 1,
-                      minWidth: '150px',
-                      padding: '12px 20px',
-                      backgroundColor: '#2e3192',
-                      color: 'white',
-                      border: 'none',
-                      borderRadius: '5px',
-                      cursor: 'pointer',
-                      fontSize: '14px',
-                      fontWeight: '600'
-                    }}
-                  >
-                    📍 Track Order
-                  </button>
+                  
                   <button
                     onClick={() => {
                       // Open WhatsApp support
                       const message = `Hi, I need help with Order #${order._id.slice(-8)}`;
-                      window.open(`https://wa.me/918044464872?text=${encodeURIComponent(message)}`, '_blank');
+                      window.open(`https://wa.me/8824018624?text=${encodeURIComponent(message)}`, '_blank');
                     }}
                     style={{
                       flex: 1,
@@ -357,31 +338,40 @@ const [cancelOrderId, setCancelOrderId] = useState(null);
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
+    padding: '20px',
     zIndex: 1000
   }}>
     <div style={{
       backgroundColor: 'white',
-      padding: '30px',
-      borderRadius: '10px',
-      width: '90%',
-      maxWidth: '400px',
-      textAlign: 'center'
+      padding: '30px 25px',
+      borderRadius: '16px',
+      width: '100%',
+      maxWidth: '420px',
+      textAlign: 'center',
+      boxShadow: '0 10px 40px rgba(0,0,0,0.15)'
     }}>
-      <h3>Cancel Order?</h3>
-      <p style={{ margin: '15px 0', color: '#666' }}>
+      <h3 style={{ marginBottom: '10px' }}>Cancel Order?</h3>
+
+      <p style={{ margin: '15px 0 25px', color: '#666' }}>
         Are you sure you want to cancel this order?
       </p>
 
-      <div style={{ display: 'flex', gap: '10px' }}>
+      <div style={{
+        display: 'flex',
+        gap: '12px',
+        flexWrap: 'wrap'
+      }}>
         <button
           onClick={() => setCancelOrderId(null)}
           style={{
             flex: 1,
-            padding: '10px',
+            minWidth: '120px',
+            padding: '12px',
             backgroundColor: '#6c757d',
             color: 'white',
             border: 'none',
-            borderRadius: '5px'
+            borderRadius: '8px',
+            fontWeight: '600'
           }}
         >
           No
@@ -391,11 +381,13 @@ const [cancelOrderId, setCancelOrderId] = useState(null);
           onClick={handleCancel}
           style={{
             flex: 1,
-            padding: '10px',
+            minWidth: '120px',
+            padding: '12px',
             backgroundColor: '#dc3545',
             color: 'white',
             border: 'none',
-            borderRadius: '5px'
+            borderRadius: '8px',
+            fontWeight: '600'
           }}
         >
           Yes, Cancel
@@ -405,18 +397,83 @@ const [cancelOrderId, setCancelOrderId] = useState(null);
   </div>
 )}
 
-      {/* Mobile Responsive Styles */}
-      <style>{`
-        @media (max-width: 768px) {
-          h2 {
-            font-size: 24px;
-          }
-          button {
-            width: 100% !important;
-            min-width: 100% !important;
-          }
-        }
-      `}</style>
+     <style>{`
+  /* ===== Tablet & Below ===== */
+  @media (max-width: 1024px) {
+    h2 {
+      font-size: 26px;
+    }
+  }
+
+  /* ===== Mobile Devices ===== */
+  @media (max-width: 768px) {
+
+    h2 {
+      font-size: 22px;
+    }
+
+    /* Order Header */
+    div[style*="justify-content: space-between"] {
+      flex-direction: column !important;
+      align-items: flex-start !important;
+    }
+
+    /* Order Items */
+    img {
+      width: 55px !important;
+      height: 55px !important;
+    }
+
+    /* Buttons Full Width */
+  
+  }
+
+  /* ===== Small Phones (Very Small Screens) ===== */
+  @media (max-width: 480px) {
+
+    h2 {
+      font-size: 20px;
+    }
+
+    h3 {
+      font-size: 18px;
+    }
+
+    h4 {
+      font-size: 15px !important;
+    }
+
+    p {
+      font-size: 13px !important;
+    }
+
+    /* Reduce padding inside cards */
+    div[style*="padding: 20px"] {
+      padding: 15px !important;
+    }
+
+    /* Modal improvement */
+    div[style*="max-width: 400px"] {
+      padding: 20px !important;
+    }
+
+  }
+
+  /* ===== Ultra Small Devices (320px) ===== */
+  @media (max-width: 360px) {
+
+    img {
+      width: 50px !important;
+      height: 50px !important;
+    }
+
+    p {
+      font-size: 12px !important;
+    }
+
+  }
+`}</style>
+
 
     </div>
   );

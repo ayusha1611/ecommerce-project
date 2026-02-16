@@ -58,60 +58,55 @@ const HomePage = ({ onProductClick }) => {
       <section className="about-section" id="about-section">
         <div className="about-container">
           <h2>About Us</h2>
-          <p>
-            Shikhar Garments - Retailer of men shorts, men lower & other products in Katihar, Bihar.
-          </p>
+         
 
           <div className="company-stats">
             <div className="stat-card">
               <div className="stat-icon">
                 <FaStore />
               </div>
-              <h3>Nature of Business</h3>
-              <p>Retailer</p>
+              
+              <p>Fashion Forward</p>
             </div>
 
             <div className="stat-card">
               <div className="stat-icon">
                 <FaFileAlt />
               </div>
-              <h3>Legal Status of Firm</h3>
-              <p>Proprietorship</p>
+              <p>Trendy makeup products</p>
+             
             </div>
 
             <div className="stat-card">
               <div className="stat-icon">
                 <FaCalendarAlt />
               </div>
-              <h3>Annual Turnover</h3>
-              <p>0 - 40 L</p>
+              <h3>Fastest Delivery</h3>
+              <p>3-4 days</p>
             </div>
 
             <div className="stat-card">
               <div className="stat-icon">
                 <FaFileAlt />
               </div>
-              <h3>GST Registration Date</h3>
-              <p>01-07-2017</p>
+              <p>Approved by Customers</p>
+              
             </div>
           </div>
 
           <div style={{ marginTop: '40px' }}>
-            <h3 style={{ fontSize: '24px', marginBottom: '15px' }}>GST Number</h3>
-            <p style={{ fontSize: '18px', fontWeight: 'bold', color: '#2e3192' }}>
-              10BRJPB9017P1ZQ
-            </p>
+            <h3 style={{ fontSize: '24px', marginBottom: '15px', color: '#b49b0d97' }}>LemOn — Where Fashion Meets Confidence</h3>
+      
           </div>
 
           <div style={{ marginTop: '40px' }}>
             <h3 style={{ fontSize: '24px', marginBottom: '15px' }}>About Our Company</h3>
             <p style={{ fontSize: '16px', lineHeight: '1.8', color: '#666', textAlign: 'left', maxWidth: '900px', margin: '0 auto' }}>
-              Established in 2017, Shikhar Garments has been serving quality garments to customers across Katihar, Bihar. 
-              We specialize in men's shorts, lowers, kids wear, and other apparel products. Our commitment to quality and 
-              customer satisfaction has made us a trusted name in the region. We offer a wide range of products including 
-              cotton boxers, regular stripe shorts, apple cut running shorts, half pants, jogger pants, and much more. 
-              With 8 years of experience in the garment retail industry, we understand our customers' needs and strive 
-              to provide the best products at competitive prices.
+             Established with a vision to inspire confidence and self-expression, LemOn is your ultimate destination for fashion, beauty, and lifestyle essentials.
+
+We curate trendy apparel, premium makeup products, stylish accessories, and everyday must-haves designed for modern lifestyles. From chic outfits and comfortable daily wear to high-quality beauty essentials and statement accessories, LemOn offers thoughtfully selected collections for men, women, and kids.
+
+Our mission is simple — to blend quality, affordability, and the latest trends into one seamless shopping experience. At LemOn, style meets convenience, and confidence begins with what you wear.
             </p>
           </div>
         </div>

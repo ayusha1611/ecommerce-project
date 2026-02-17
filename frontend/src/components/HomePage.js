@@ -12,7 +12,7 @@ const HomePage = ({ onProductClick }) => {
 
   const fetchProducts = async () => {
     try {
-      const response = await axios.get('/api/products');
+      const response =axios.get(`${process.env.REACT_APP_API_URL}/api/products`)
       if (response.data.success) {
         setProducts(response.data.products);
       }

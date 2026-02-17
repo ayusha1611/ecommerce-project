@@ -15,12 +15,10 @@ connectDB();
 
 // Middleware
 
-const cors = require("cors");
-
 app.use(cors({
   origin: [
     "http://localhost:3000",
-    "https://ecommerce-project6-f9f2aaeuf-ayusha-mahis-projects.vercel.app"
+    "https://ecommerce-project9.vercel.app"
   ],
   credentials: true
 }));

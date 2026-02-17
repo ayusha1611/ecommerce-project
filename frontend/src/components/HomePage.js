@@ -12,10 +12,25 @@ const HomePage = ({ onProductClick }) => {
 
   const fetchProducts = async () => {
     try {
-      const response =axios.get(`${process.env.REACT_APP_API_URL}/api/products`)
-      if (response.data.success) {
-        setProducts(response.data.products);
-      }
+      const fetchProducts = async () => {
+  try {
+    const response = await axios.get(
+      `${process.env.REACT_APP_API_URL}/api/products`
+    );
+
+    console.log("Products response:", response);
+
+    if (response?.data?.success) {
+      setProducts(response.data.products);
+    } else {
+      console.log("Invalid response format");
+    }
+
+  } catch (error) {
+    console.error("Full error:", error.response || error);
+  }
+};
+
     } catch (error) {
       console.error('Error fetching products:', error);
     } finally {

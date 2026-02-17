@@ -14,14 +14,22 @@ const app = express();
 connectDB();
 
 // Middleware
-
 app.use(cors({
-  origin: [
-    "http://localhost:3000",
-    "https://ecommerce-project9.vercel.app"
-  ],
+  origin: function (origin, callback) {
+    if (!origin) return callback(null, true);
+
+    if (
+      origin.includes("vercel.app") ||
+      origin.includes("localhost")
+    ) {
+      callback(null, true);
+    } else {
+      callback(new Error("Not allowed by CORS"));
+    }
+  },
   credentials: true
 }));
+
 
 
 app.use(express.json());

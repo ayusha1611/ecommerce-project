@@ -26,7 +26,7 @@ export const AuthProvider = ({ children }) => {
 
   const verifyToken = async () => {
     try {
-      const response = await axios.get('/api/auth/verify', {
+      const response = axios.get(`${process.env.REACT_APP_API_URL}/api/auth/verify`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       
@@ -45,8 +45,8 @@ export const AuthProvider = ({ children }) => {
 
   const login = async (credentials) => {
     try {
-      const response = await axios.post('/api/auth/login', credentials);
-      
+      const response = axios.post(`${process.env.REACT_APP_API_URL}/api/auth/login`, credentials);
+
       if (response.data.success) {
         const { token, user } = response.data;
         localStorage.setItem('token', token);
